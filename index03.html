@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
+    <title>Project Liminal Vertigo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #050505;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #canvas-portal-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .ambient-vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(0,0,0,0.95) 90%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.25) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .portal-core {
+            position: relative;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phi-logo {
+            font-size: 120px;
+            color: #d1c4e9;
+            text-shadow: 0 0 20px rgba(103, 58, 183, 0.6);
+            animation: pulseDistortion 6s infinite ease-in-out;
+            transition: transform 0.5s ease, color 0.5s ease;
+        }
+
+        #canvas-portal-container:hover .phi-logo {
+            color: #ff5252;
+            text-shadow: 0 0 30px rgba(255, 82, 82, 0.8);
+            transform: scale(1.05);
+        }
+
+        .interface-text {
+            margin-top: 40px;
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: #555555;
+            text-transform: uppercase;
+            transition: color 0.5s ease;
+            text-align: center;
+        }
+
+        #canvas-portal-container:hover .interface-text {
+            color: #888888;
+        }
+
+        @keyframes pulseDistortion {
+            0% {
+                transform: scale(1);
+                opacity: 0.85;
+                filter: hue-rotate(0deg) blur(0px);
+            }
+            48% {
+                transform: scale(1.02) skew(0deg);
+                opacity: 0.9;
+                filter: blur(0px);
+            }
+            50% {
+                transform: scale(0.98) skew(4deg);
+                opacity: 0.4;
+                filter: blur(2px);
+            }
+            52% {
+                transform: scale(1.04) skew(-2deg);
+                opacity: 0.8;
+                filter: blur(1px);
+            }
+            54% {
+                transform: scale(1) skew(0deg);
+                opacity: 0.9;
+                filter: blur(0px);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.85;
+                filter: hue-rotate(360deg) blur(0px);
+            }
+        }
+
+        #rift-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+            z-index: 10;
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-portal-container" onclick="initiateRiftTransition()">
+        <div class="ambient-vignette"></div>
+        <div class="scanlines"></div>
+        
+        <div class="portal-core">
+            <div class="phi-logo">Φ</div>
+            <div class="interface-text">Enter the Rift</div>
+        </div>
+    </div>
+
+    <iframe id="rift-frame" src=""></iframe>
+
+    <script>
+        function initiateRiftTransition() {
+            const portalContainer = document.getElementById('canvas-portal-container');
+            const riftFrame = document.getElementById('rift-frame');
+            
+            // Array pointing to your distinct isolated sub-folders
+            const rifts = [
+                '../site01/index.html',
+                '../site02/index.html',
+                '../site03/index.html',
+		'../site04/index.html'
+            ];
+            
+            const chosenRift = rifts[Math.floor(Math.random() * rifts.length)];
+            
+            // Assign the random target path to the hidden iframe
+            riftFrame.src = chosenRift;
+            
+            // Trigger interface fade out sequence
+            portalContainer.style.transition = 'opacity 1.5s ease';
+            portalContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                portalContainer.style.display = 'none';
+                riftFrame.style.display = 'block';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <title>PROJECT LIMINAL VERTIGO</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(45deg, #1a0000, #0f0a1f, #1a0000);
+      background-size: 400% 400%;
+      animation: breath 25s ease infinite;
+      color: #666;
+      font-family: 'VT323', monospace;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @keyframes breath {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+
+    .btn {
+      padding: 20px 60px;
+      font-size: 1.8rem;
+      background: transparent;
+      border: 2px solid #550000;
+      color: #aa4444;
+      cursor: pointer;
+      transition: all 0.6s;
+    }
+
+    .btn:hover {
+      border-color: #ff4444;
+      color: #ffdddd;
+      box-shadow: 0 0 40px #880000;
+    }
+
+    .word {
+      position: absolute;
+      color: #555;
+      font-size: 1.4rem;
+      opacity: 0;
+      pointer-events: none;
+      text-shadow: 0 0 10px #330000;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <button class="btn" onclick="window.location.href='../site01/index.html'">What lies beyond?</button>
+  </div>
+
+  <script>
+    const words = ["still moving", "not alone", "they remember", "keep walking", "something listens", "wrong direction", "listen carefully", "deeper", "further", "investigate", "the unknowable", "it learns", "no exit", "you are here", "changes every time I reload", "do not stay still", "this wasn't here before", "it stares", "it watches", "it follows", "the walls bleed", "i've been here before", "familiar, yet unfamiliar", "darkness encroaches", "at the back of my mind", "behind you", "the abyss stares back", "fear the unknown", "the madness creeps in", "darkness takes its toll", "insanity and despair", "madness and torment", "endless trials", "slipping away", "what is real?", "reality has broken", "looping nightmare"];
+
+    function createWord() {
+      const word = document.createElement('div');
+      word.className = 'word';
+      word.textContent = words[Math.floor(Math.random() * words.length)];
+      
+      word.style.left = Math.random() * 100 + 'vw';
+      word.style.top = Math.random() * 100 + 'vh';
+      
+      document.body.appendChild(word);
+
+      setTimeout(() => {
+        word.style.transition = 'all 8s';
+        word.style.opacity = '0.7';
+      }, 100);
+
+      setTimeout(() => {
+        word.style.opacity = '0';
+      }, 4000);
+
+      setTimeout(() => word.remove(), 12000);
+    }
+
+    setInterval(createWord, 900);
+    setInterval(createWord, 1400); // overlapping effect
+  </script>
+</body>
+</html>

@@ -2,41 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="favicon.png">
-  <title>DigitalPhoenix Studio</title>
+  <title>PROJECT LIMINAL VERTIGO</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
+      background: #000;
+      color: #ddd;
+      font-family: 'VT323', monospace;
+      overflow: hidden;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
+      position: relative;
     }
-
-    a {
-      font-size: 24px;
-      color: #00ffff;
-      text-decoration: none;
-      border: 2px solid #00ffff;
-      padding: 15px 30px;
-      border-radius: 10px;
-      transition: 0.3s;
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 2rem;
+      color: #666;
+      animation: flicker 1.5s infinite;
+      z-index: 1;
+      transition: opacity 0.5s ease;
     }
-
-    a:hover {
-      background-color: #00ffff;
-      color: black;
+    @keyframes flicker {
+      0%,100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    #rift-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: none;
+      z-index: 2;
+      background: #000;
     }
   </style>
 </head>
 <body>
-  <a href="https://digitalphoenix3d.github.io/ProjectLiminalVertigo/">
-    Enter Project Liminal Vertigo
-  </a>
+  <div class="loading" id="loading-signal">
+    SIGNAL ACQUIRED...<br>
+    CONNECTING TO UNKNOWN CHANNEL...
+  </div>
+
+  <iframe id="rift-frame" src=""></iframe>
+
+  <script>
+    const versions = [
+      "index01.html",
+      "index02.html",
+      "index03.html",
+      "v1.html",
+      "v2.html",
+      "v3.html",
+      "v4.html"      // breathing version
+    ];
+
+    const randomPage = versions[Math.floor(Math.random() * versions.length)];
+    const frame = document.getElementById('rift-frame');
+    const loadingSignal = document.getElementById('loading-signal');
+
+    // Pre-assign the source immediately to initiate background loading during the loading animation phase
+    frame.src = randomPage;
+
+    setTimeout(() => {
+      // Fade out the terminal loading text
+      loadingSignal.style.opacity = '0';
+      
+      setTimeout(() => {
+        // Hide loading container entirely and present the full screen embedded rift page
+        loadingSignal.style.display = 'none';
+        frame.style.display = 'block';
+      }, 500);
+    }, 2200);
+  </script>
 </body>
 </html>
