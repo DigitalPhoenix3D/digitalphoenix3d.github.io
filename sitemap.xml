@@ -6,23 +6,8 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
   <url>
-    <loc>https://digitalphoenix3d.github.io/index.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://digitalphoenix3d.github.io/index01.html</loc>
-    <priority>0.8</priority>
-  </url>
- <url>
-    <loc>https://digitalphoenix3d.github.io/index02.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://digitalphoenix3d.github.io/index03.html</loc>
-    <priority>0.8</priority>
-  </url>
- <url>
     <loc>https://digitalphoenix3d.github.io/v1.html</loc>
     <priority>0.8</priority>
   </url>
@@ -30,7 +15,7 @@
     <loc>https://digitalphoenix3d.github.io/v2.html</loc>
     <priority>0.8</priority>
   </url>
- <url>
+  <url>
     <loc>https://digitalphoenix3d.github.io/v3.html</loc>
     <priority>0.8</priority>
   </url>
@@ -38,32 +23,17 @@
     <loc>https://digitalphoenix3d.github.io/v4.html</loc>
     <priority>0.8</priority>
   </url>
- <url>
-    <loc>https://digitalphoenix3d.github.io/ProjectLiminalVertigo/</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+  
+  <url>
+    <loc>https://digitalphoenix3d.github.io/index01.html</loc>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://digitalphoenix3d.github.io/ProjectLiminalVertigo/index.html</loc>
-    <priority>0.8</priority>
-  </url>
- <url>
-    <loc>https://digitalphoenix3d.github.io/ProjectLiminalVertigo/site01/index.html</loc>
-    <priority>0.8</priority>
+    <loc>https://digitalphoenix3d.github.io/index02.html</loc>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://digitalphoenix3d.github.io/ProjectLiminalVertigo/site02/index.html</loc>
-    <priority>0.8</priority>
+    <loc>https://digitalphoenix3d.github.io/index03.html</loc>
+    <priority>0.7</priority>
   </url>
- <url>
-    <loc>https://digitalphoenix3d.github.io/ProjectLiminalVertigo/site03/index.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://digitalphoenix3d.github.io/ProjectLiminalVertigo/site04/index.html</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Add more promo pages -->
-</urlset>
+ </urlset>
